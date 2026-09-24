@@ -6,7 +6,7 @@ Otherwise it is **In progress** with the exact blocker listed.
 
 | Date | Project | Domain | Agent architecture | Stack | GitHub | Live URL | Status |
 |---|---|---|---|---|---|---|---|
-| 2026-09-23 | [AEO Evidence Auditor](2026-09-23-aeo-evidence-auditor/) | SEO / AEO | 5 agents: Crawler → Technical Auditor → Intent Analyst (LLM, tool calling) → Gap Strategist (LLM, structured output) → Evidence Verifier (with a revision loop back to Gap Strategist) → human review | Python, FastAPI, Pydantic, Ollama, BM25, vanilla JS | not created | not deployed | **In progress**: local build verified; blocked on GitHub access and a hosting account |
+| 2026-09-23 | [AEO Evidence Auditor](2026-09-23-aeo-evidence-auditor/) | SEO / AEO | 5 agents: Crawler → Technical Auditor → Intent Analyst (LLM, tool calling) → Gap Strategist (LLM, structured output) → Evidence Verifier (with a revision loop back to Gap Strategist) → human review | Python, FastAPI, Pydantic, Ollama, BM25, vanilla JS | [aeo-evidence-auditor](https://github.com/vadivel-developer/aeo-evidence-auditor) | not deployed | **In progress**: local build verified and on GitHub; blocked on choosing a hosting account for the live URL |
 
 ## Coverage so far
 

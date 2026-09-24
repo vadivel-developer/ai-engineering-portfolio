@@ -8,8 +8,8 @@ until a person approves it.
 
 | | |
 |---|---|
-| **Status** | In progress. Built and verified locally; not yet published (see [section 13](#13-github-repository-and-live-url)) |
-| **GitHub** | Not created yet |
+| **Status** | In progress. Built, verified locally and published to GitHub; not yet deployed (see [section 13](#13-github-repository-and-live-url)) |
+| **GitHub** | https://github.com/vadivel-developer/aeo-evidence-auditor |
 | **Live demo** | Not deployed yet |
 | **Runs without paid APIs** | Yes. Demonstration mode needs no model; the model mode uses a free local model through Ollama |
 
@@ -272,8 +272,7 @@ independent verifier is what stops those fabrications reaching a client. With th
 
 ## 13. GitHub repository and live URL
 
-* GitHub repository: **not created**. GitHub CLI is not installed on the build machine and no
-  GitHub credentials were available to the build session.
+* GitHub repository: **https://github.com/vadivel-developer/aeo-evidence-auditor** (public). Portfolio index: https://github.com/vadivel-developer/ai-engineering-portfolio
 * Live URL: **none**. No hosting account was specified. The app runs as a single Python web process
   (`uvicorn app.main:app`), so any Python host works; a suitable free option is Render's free web
   service (build `pip install -r requirements.txt`, start

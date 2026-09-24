@@ -15,7 +15,7 @@ Every project:
 
 | Date | Project | Domain | Agent roles | Technologies | GitHub | Live | Verification |
 |---|---|---|---|---|---|---|---|
-| 2026-09-23 | [AEO Evidence Auditor](daily-ai-projects/2026-09-23-aeo-evidence-auditor/) | SEO / answer-engine optimisation | Crawler, Technical Auditor, Intent Analyst (LLM + tools), Gap Strategist (LLM), Evidence Verifier, human reviewer | Python 3.13, FastAPI, Pydantic v2, Ollama (qwen3:4b), BM25, vanilla JS | not created yet | not deployed yet | Local: 53 tests, ruff, mypy --strict, eval set, desktop and mobile browser run, axe-core 0 violations. **In progress** (not yet published) |
+| 2026-09-23 | [AEO Evidence Auditor](daily-ai-projects/2026-09-23-aeo-evidence-auditor/) | SEO / answer-engine optimisation | Crawler, Technical Auditor, Intent Analyst (LLM + tools), Gap Strategist (LLM), Evidence Verifier, human reviewer | Python 3.13, FastAPI, Pydantic v2, Ollama (qwen3:4b), BM25, vanilla JS | [aeo-evidence-auditor](https://github.com/vadivel-developer/aeo-evidence-auditor) | not deployed yet | Local: 55 tests, ruff, mypy --strict, eval set, desktop and mobile browser run, axe-core 0 violations. **In progress** (on GitHub; not yet deployed) |
 
 The full list with status and blockers is in [daily-ai-projects/PROJECT_TRACKER.md](daily-ai-projects/PROJECT_TRACKER.md).
 
