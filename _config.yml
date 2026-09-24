@@ -1,6 +1,0 @@
-title: AI Engineering Portfolio
-description: Working AI agent applications by Vadivel T
-theme: jekyll-theme-primer
-# GitHub Pages builds only the portfolio index; project source folders are excluded.
-exclude:
-  - projects/
