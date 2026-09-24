@@ -1,0 +1,22 @@
+# Render Blueprint: one free web service running the public demo.
+# Deploy: https://render.com/deploy?repo=https://github.com/vadivel-developer/aeo-evidence-auditor
+services:
+  - type: web
+    name: aeo-evidence-auditor
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.10
+      # Public demo: deterministic demonstration mode, clearly labelled in the UI.
+      - key: AEO_LLM_PROVIDER
+        value: demo
+      # Never enable live crawling on a public server (it would act as an open crawler proxy).
+      - key: AEO_LIVE_CRAWL_ENABLED
+        value: "false"
+      - key: AEO_LOG_LEVEL
+        value: INFO

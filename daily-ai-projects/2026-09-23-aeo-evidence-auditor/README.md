@@ -273,12 +273,13 @@ independent verifier is what stops those fabrications reaching a client. With th
 ## 13. GitHub repository and live URL
 
 * GitHub repository: **https://github.com/vadivel-developer/aeo-evidence-auditor** (public). Portfolio index: https://github.com/vadivel-developer/ai-engineering-portfolio
-* Live URL: **none**. No hosting account was specified. The app runs as a single Python web process
-  (`uvicorn app.main:app`), so any Python host works; a suitable free option is Render's free web
-  service (build `pip install -r requirements.txt`, start
-  `uvicorn app.main:app --host 0.0.0.0 --port $PORT`, env `AEO_LLM_PROVIDER=demo`,
-  `AEO_LIVE_CRAWL_ENABLED=false`). A public deployment would run in clearly labelled demonstration
-  mode.
+* Live URL: **not deployed yet.** The repository includes a Render Blueprint (`render.yaml`): one free
+  web service, `AEO_LLM_PROVIDER=demo`, live crawling off, health check `/api/health`. To deploy:
+
+  [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vadivel-developer/aeo-evidence-auditor)
+
+  The public demo runs in the clearly labelled demonstration mode, because a free host has no GPU or
+  local model. Free Render services sleep after inactivity, so the first request can take about a minute.
 
 ## 14. Skills demonstrated and relevant roles
 
