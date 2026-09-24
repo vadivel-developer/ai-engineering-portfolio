@@ -1,0 +1,22 @@
+{
+  "desktop-start": [],
+  "desktop-review": [],
+  "desktop-tab-intents": [],
+  "desktop-tab-pages": [],
+  "desktop-tab-trace": [],
+  "desktop-tab-findings": [],
+  "desktop-report": [],
+  "desktop-horizontal-overflow-px": 0,
+  "desktop-console-errors": [],
+  "mobile-start": [],
+  "mobile-review": [],
+  "mobile-report": [],
+  "mobile-horizontal-overflow-px": 0,
+  "mobile-console-errors": [],
+  "keyboard": {
+    "reachedRunButtonByTab": true,
+    "arrowMovesTo": "tab-findings",
+    "findingsPanelShown": true,
+    "focusOutline": "solid"
+  }
+}

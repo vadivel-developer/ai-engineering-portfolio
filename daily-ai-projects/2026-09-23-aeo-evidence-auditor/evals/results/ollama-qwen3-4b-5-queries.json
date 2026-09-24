@@ -1,0 +1,113 @@
+{
+  "mode": "ollama:qwen3:4b",
+  "status": "awaiting_review",
+  "error": null,
+  "seconds": 1999.9,
+  "intents": [
+    {
+      "query": "emergency plumber near me",
+      "intent": "local",
+      "best_url": "https://brightwater-plumbing.example/emergency-plumber",
+      "match": "strong",
+      "rationale": "The query 'emergency plumber near me' clearly indicates local intent (emergency + near me). The top search result (score 6.958) is a dedicated emergency plumber page with a Tacoma location, showing strong local relevance. The page title explicitly mentions '24/7 Emergency Plumber in Tacoma' and the ",
+      "tool_calls": 1
+    },
+    {
+      "query": "why is my water heater making a popping noise",
+      "intent": "informational",
+      "best_url": "https://brightwater-plumbing.example/blog/water-heater-noises",
+      "match": "strong",
+      "rationale": "The query is about diagnosing a water heater noise issue. The top search result (score 6.316) has a title explicitly addressing 'What That Noise From Your Water Heater Means' and high heading coverage (0.6), directly answering the user's need for causes/solutions. The other pages are less relevant: ",
+      "tool_calls": 1
+    },
+    {
+      "query": "how much does drain cleaning cost",
+      "intent": "commercial",
+      "best_url": "https://brightwater-plumbing.example/services/drain-cleaning",
+      "match": "partial",
+      "rationale": "FALLBACK (model failed): search_pages top hit https://brightwater-plumbing.example/services/drain-cleaning (BM25 5.31); 67% of query terms appear in its title/headings -> partial match. Intent from keyword rules.",
+      "tool_calls": 1
+    },
+    {
+      "query": "tankless water heater installation",
+      "intent": "transactional",
+      "best_url": "https://brightwater-plumbing.example/services/water-heater-repair",
+      "match": "partial",
+      "rationale": "FALLBACK (model failed): search_pages top hit https://brightwater-plumbing.example/services/water-heater-repair (BM25 1.292); 50% of query terms appear in its title/headings -> partial match. Intent from keyword rules.",
+      "tool_calls": 1
+    },
+    {
+      "query": "brightwater plumbing reviews",
+      "intent": "commercial",
+      "best_url": "https://brightwater-plumbing.example/blog/",
+      "match": "partial",
+      "rationale": "The query 'brightwater plumbing reviews' suggests the user wants to evaluate the company before hiring. The top page is a blog with plumbing tips but no explicit reviews section. It's commercial intent (comparing options) but the page doesn't directly answer the review request, hence partial match.",
+      "tool_calls": 2
+    }
+  ],
+  "gap_recs": [],
+  "verifications": [],
+  "stages": [
+    {
+      "agent": "crawler",
+      "status": "done",
+      "ms": 16,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "agent": "technical_auditor",
+      "status": "done",
+      "ms": 0,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "agent": "intent_analyst",
+      "status": "done",
+      "ms": 1999872,
+      "calls": 21,
+      "prompt_tokens": 12917,
+      "output_tokens": 6706
+    },
+    {
+      "agent": "gap_strategist",
+      "status": "skipped",
+      "ms": null,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "agent": "evidence_verifier",
+      "status": "done",
+      "ms": 7,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "agent": "human_review",
+      "status": "running",
+      "ms": null,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    }
+  ],
+  "retries": [
+    "https://brightwater-plumbing.example/services/sewer-line-repair -> not found",
+    "https://brightwater-plumbing.example/blog/water-heater-noises: quarantined 2 line(s) that look like instructions to an AI",
+    "model transport error (ReadTimeout), attempt 1",
+    "model transport error (ReadTimeout), attempt 2",
+    "model transport error (ReadTimeout), attempt 3",
+    "'how much does drain cleaning cost': model unavailable after 3 attempts: . Using deterministic fallback.",
+    "model transport error (ReadTimeout), attempt 1",
+    "model transport error (ReadTimeout), attempt 2",
+    "model transport error (ReadTimeout), attempt 3",
+    "'tankless water heater installation': model unavailable after 3 attempts: . Using deterministic fallback.",
+    "model transport error (ReadTimeout), attempt 1"
+  ]
+}

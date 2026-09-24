@@ -1,0 +1,143 @@
+{
+  "mode": "ollama:llama3.2",
+  "status": "awaiting_review",
+  "seconds": 574.4,
+  "model_calls": 55,
+  "prompt_tokens": 27992,
+  "output_tokens": 6666,
+  "technical": {
+    "expected": 20,
+    "found": 24,
+    "true_positives": 20,
+    "precision": 0.833,
+    "recall": 1.0,
+    "missed": [],
+    "extra": [
+      [
+        "thin_content",
+        "/"
+      ],
+      [
+        "thin_content",
+        "/about"
+      ],
+      [
+        "thin_content",
+        "/emergency-plumber"
+      ],
+      [
+        "thin_content",
+        "/services/water-heater-repair"
+      ]
+    ]
+  },
+  "intent_accuracy": "8/12",
+  "best_page_accuracy": "8/12",
+  "fallbacks_used": 0,
+  "gap_first_pass_verified": "9/19",
+  "verified_recommendations": 26,
+  "rejected_recommendations": 16,
+  "injection": {
+    "quarantined_lines": 2,
+    "markers_in_verified_output": [],
+    "passed": true
+  },
+  "per_query": [
+    {
+      "query": "emergency plumber near me",
+      "intent": "local",
+      "expected_intent": "local",
+      "best": "/emergency-plumber",
+      "expected_best": "/emergency-plumber",
+      "fallback": false
+    },
+    {
+      "query": "why is my water heater making a popping noise",
+      "intent": "informational",
+      "expected_intent": "informational",
+      "best": "/blog/water-heater-noises",
+      "expected_best": "/blog/water-heater-noises",
+      "fallback": false
+    },
+    {
+      "query": "how much does drain cleaning cost",
+      "intent": "commercial",
+      "expected_intent": "commercial",
+      "best": "/services/drain-cleaning",
+      "expected_best": "/services/drain-cleaning",
+      "fallback": false
+    },
+    {
+      "query": "tankless water heater installation",
+      "intent": "transactional",
+      "expected_intent": "transactional",
+      "best": "/services/water-heater-repair",
+      "expected_best": "/services/water-heater-repair",
+      "fallback": false
+    },
+    {
+      "query": "brightwater plumbing reviews",
+      "intent": "commercial",
+      "expected_intent": "navigational",
+      "best": "/about",
+      "expected_best": null,
+      "fallback": false
+    },
+    {
+      "query": "how to stop pipes freezing",
+      "intent": "informational",
+      "expected_intent": "informational",
+      "best": "/blog/winterize-pipes",
+      "expected_best": "/blog/winterize-pipes",
+      "fallback": false
+    },
+    {
+      "query": "water heater repair tacoma",
+      "intent": "transactional",
+      "expected_intent": "local",
+      "best": "/services/water-heater-repair",
+      "expected_best": "/services/water-heater-repair",
+      "fallback": false
+    },
+    {
+      "query": "burst pipe what to do",
+      "intent": "informational",
+      "expected_intent": "informational",
+      "best": "/blog/winterize-pipes",
+      "expected_best": "/emergency-plumber",
+      "fallback": false
+    },
+    {
+      "query": "book drain cleaning",
+      "intent": "transactional",
+      "expected_intent": "transactional",
+      "best": "/services/drain-cleaning",
+      "expected_best": "/services/drain-cleaning",
+      "fallback": false
+    },
+    {
+      "query": "brightwater plumbing",
+      "intent": "commercial",
+      "expected_intent": "navigational",
+      "best": "/about",
+      "expected_best": "/",
+      "fallback": false
+    },
+    {
+      "query": "is it worth repairing an old water heater",
+      "intent": "informational",
+      "expected_intent": "commercial",
+      "best": "/services/water-heater-repair",
+      "expected_best": "/services/water-heater-repair",
+      "fallback": false
+    },
+    {
+      "query": "why does my faucet bang when i turn it off",
+      "intent": "informational",
+      "expected_intent": "informational",
+      "best": "/blog/winterize-pipes",
+      "expected_best": "/blog/water-heater-noises",
+      "fallback": false
+    }
+  ]
+}

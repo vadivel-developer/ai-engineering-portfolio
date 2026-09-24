@@ -1,0 +1,208 @@
+{
+  "mode": "ollama:llama3.2",
+  "status": "awaiting_review",
+  "error": null,
+  "seconds": 116.4,
+  "intents": [
+    {
+      "query": "how much does drain cleaning cost",
+      "intent": "commercial",
+      "best_url": "https://brightwater-plumbing.example/services/drain-cleaning",
+      "match": "partial",
+      "rationale": "[Downgraded to partial: page never uses cost] The URL is a clear match for the query, and the page title and content are related to drain cleaning services, including pricing information.",
+      "tool_calls": 1
+    },
+    {
+      "query": "tankless water heater installation",
+      "intent": "transactional",
+      "best_url": "https://brightwater-plumbing.example/services/water-heater-repair",
+      "match": "partial",
+      "rationale": "[Downgraded to partial: page never uses tankless, installation] The URL is a clear service page that offers tankless water heater installation, repair, and related services. The page title and content are likely to provide information and guidance for users looking to install a tankless water heater.",
+      "tool_calls": 1
+    }
+  ],
+  "gap_recs": [
+    {
+      "id": "G01",
+      "title": "Cost of Drain Cleaning",
+      "evidence": [
+        {
+          "kind": "absent",
+          "url": "https://brightwater-plumbing.example/services/drain-cleaning",
+          "text": "cost",
+          "field": null
+        }
+      ]
+    },
+    {
+      "id": "G02",
+      "title": "Average Cost of Drain Cleaning",
+      "evidence": [
+        {
+          "kind": "quote",
+          "url": "https://www.hunker.com/13411140/how-much-does-drain-cleaning-cost",
+          "text": "The average cost of drain cleaning is around $200-$300.",
+          "field": null
+        }
+      ]
+    },
+    {
+      "id": "G03",
+      "title": "Tankless Water Heater Installation",
+      "evidence": [
+        {
+          "kind": "absent",
+          "url": "https://brightwater-plumbing.example/services/tankless-water-heater-installation",
+          "text": "tankless water heater installation",
+          "field": null
+        }
+      ]
+    },
+    {
+      "id": "G04",
+      "title": "Tankless Water Heater Installation",
+      "evidence": [
+        {
+          "kind": "quote",
+          "url": "https://brightwater-plumbing.example/services/tankless-water-heater-installation",
+          "text": "We install tankless water heaters from every major manufacturer, including Rinnai, Navien, and Bosch.",
+          "field": null
+        }
+      ]
+    },
+    {
+      "id": "G02r1",
+      "title": "Average Cost of Drain Cleaning",
+      "evidence": [
+        {
+          "kind": "quote",
+          "url": "https://www.hunker.com/13411140/how-much-does-drain-cleaning-cost",
+          "text": "The average cost of drain cleaning is around $200-$300.",
+          "field": null
+        }
+      ]
+    },
+    {
+      "id": "G03r1",
+      "title": "Tankless Water Heater Installation",
+      "evidence": [
+        {
+          "kind": "quote",
+          "url": "https://brightwater-plumbing.example/services/tankless-water-heater-installation",
+          "text": "Tankless Water Heater Installation",
+          "field": null
+        }
+      ]
+    },
+    {
+      "id": "G04r1",
+      "title": "Tankless Water Heater Installation",
+      "evidence": [
+        {
+          "kind": "quote",
+          "url": "https://brightwater-plumbing.example/services/tankless-water-heater-installation",
+          "text": "We install tankless water heaters from every major manufacturer, including Rinnai, Navien, and Bosch.",
+          "field": null
+        }
+      ]
+    }
+  ],
+  "verifications": [
+    {
+      "rec_id": "G02",
+      "verdict": "rejected",
+      "reasons": [
+        "evidence cites https://www.hunker.com/13411140/how-much-does-drain-cleaning-cost, which was not crawled"
+      ]
+    },
+    {
+      "rec_id": "G03",
+      "verdict": "rejected",
+      "reasons": [
+        "evidence cites https://brightwater-plumbing.example/services/tankless-water-heater-installation, which was not crawled"
+      ]
+    },
+    {
+      "rec_id": "G04",
+      "verdict": "rejected",
+      "reasons": [
+        "evidence cites https://brightwater-plumbing.example/services/tankless-water-heater-installation, which was not crawled"
+      ]
+    },
+    {
+      "rec_id": "G02r1",
+      "verdict": "rejected",
+      "reasons": [
+        "evidence cites https://www.hunker.com/13411140/how-much-does-drain-cleaning-cost, which was not crawled"
+      ]
+    },
+    {
+      "rec_id": "G03r1",
+      "verdict": "rejected",
+      "reasons": [
+        "evidence cites https://brightwater-plumbing.example/services/tankless-water-heater-installation, which was not crawled"
+      ]
+    },
+    {
+      "rec_id": "G04r1",
+      "verdict": "rejected",
+      "reasons": [
+        "evidence cites https://brightwater-plumbing.example/services/tankless-water-heater-installation, which was not crawled"
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "agent": "crawler",
+      "status": "done",
+      "ms": 27,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "agent": "technical_auditor",
+      "status": "done",
+      "ms": 0,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "agent": "intent_analyst",
+      "status": "done",
+      "ms": 38057,
+      "calls": 6,
+      "prompt_tokens": 2399,
+      "output_tokens": 430
+    },
+    {
+      "agent": "gap_strategist",
+      "status": "done",
+      "ms": 38722,
+      "calls": 2,
+      "prompt_tokens": 1158,
+      "output_tokens": 437
+    },
+    {
+      "agent": "evidence_verifier",
+      "status": "done",
+      "ms": 39624,
+      "calls": 3,
+      "prompt_tokens": 2244,
+      "output_tokens": 497
+    },
+    {
+      "agent": "human_review",
+      "status": "running",
+      "ms": null,
+      "calls": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    }
+  ],
+  "retries": [
+    "https://brightwater-plumbing.example/services/sewer-line-repair -> not found",
+    "https://brightwater-plumbing.example/blog/water-heater-noises: quarantined 2 line(s) that look like instructions to an AI"
+  ]
+}

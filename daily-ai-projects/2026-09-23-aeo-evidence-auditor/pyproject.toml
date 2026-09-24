@@ -1,0 +1,26 @@
+[project]
+name = "aeo-evidence-auditor"
+version = "0.1.0"
+description = "Multi-agent SEO/AEO audit with evidence verification and human review"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "E501"]  # line length is left to `ruff format`; long lines are prose strings
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["app"]
+
+[[tool.mypy.overrides]]
+module = ["bs4.*"]
+ignore_missing_imports = true

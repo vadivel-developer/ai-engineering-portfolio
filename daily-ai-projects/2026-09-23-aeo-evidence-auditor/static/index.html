@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AEO Evidence Auditor</title>
+<meta name="description" content="Multi-agent SEO and answer-engine audit where every recommendation is checked against the crawled pages and approved by a person.">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/app.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to results</a>
+<header class="topbar">
+  <div class="brand">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28"><rect x="3" y="4" width="15" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 10h7M7 14h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="19" cy="18" r="5" fill="var(--paper)" stroke="currentColor" stroke-width="2"/><path d="M22.5 21.5 26 25" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+    <div>
+      <p class="brand-name">AEO Evidence Auditor</p>
+      <p class="brand-sub">SEO and answer-engine audits you can check line by line</p>
+    </div>
+  </div>
+  <p class="mode" id="mode" role="status">Checking backend…</p>
+</header>
+
+<div class="layout">
+  <aside class="side" aria-label="Audit setup and progress">
+    <form id="audit-form" class="panel" novalidate>
+      <h1 class="panel-title">Start an audit</h1>
+      <fieldset class="source">
+        <legend>Website</legend>
+        <label class="radio"><input type="radio" name="source" value="sample" checked> Sample site</label>
+        <label class="radio"><input type="radio" name="source" value="live" id="source-live"> Live URL</label>
+      </fieldset>
+      <div id="sample-box">
+        <label for="sample">Sample</label>
+        <select id="sample" name="sample"></select>
+        <p class="hint" id="sample-desc"></p>
+      </div>
+      <div id="live-box" hidden>
+        <label for="start-url">Start URL</label>
+        <input id="start-url" name="start_url" type="url" inputmode="url" placeholder="https://www.example.com/" autocomplete="url">
+        <p class="hint" id="live-hint">Same-site pages only. robots.txt is respected.</p>
+      </div>
+      <label for="queries">Target search queries <span class="hint-inline">one per line, up to 12</span></label>
+      <textarea id="queries" name="queries" rows="6" required aria-describedby="queries-error"></textarea>
+      <p class="field-error" id="queries-error" aria-live="polite"></p>
+      <label for="max-pages">Page limit</label>
+      <input id="max-pages" name="max_pages" type="number" min="1" max="50" value="15">
+      <button class="btn primary" type="submit" id="run-btn">Run audit</button>
+      <p class="form-error" id="form-error" role="alert"></p>
+    </form>
+
+    <section class="panel" aria-labelledby="pipeline-title">
+      <h2 class="panel-title" id="pipeline-title">Agents</h2>
+      <ol class="pipeline" id="pipeline"></ol>
+      <p class="usage" id="usage"></p>
+    </section>
+  </aside>
+
+  <main id="main" class="main" tabindex="-1">
+    <section class="empty" id="empty">
+      <h2>Nothing audited yet</h2>
+      <p>Run the sample audit to watch five agents crawl a small plumbing company's site, check it, and hand you a list of recommendations. Each one shows the evidence behind it, and nothing goes into the report until you approve it.</p>
+      <ul class="empty-list">
+        <li><strong>Crawler</strong> fetches same-site pages and quarantines text that tries to instruct an AI.</li>
+        <li><strong>Technical Auditor</strong> runs rule-based checks such as titles, H1s, noindex, broken links and JSON-LD.</li>
+        <li><strong>Intent Analyst</strong> classifies each query and searches the site for the page that answers it.</li>
+        <li><strong>Gap Strategist</strong> proposes content changes, each backed by a quote or a missing term.</li>
+        <li><strong>Evidence Verifier</strong> re-checks every claim against the pages and sends failures back once.</li>
+      </ul>
+    </section>
+
+    <section id="results" hidden>
+      <div class="run-head">
+        <div>
+          <h2 id="run-title">Audit</h2>
+          <p class="run-meta" id="run-meta"></p>
+        </div>
+        <p class="status-pill" id="status-pill" role="status" aria-live="polite"></p>
+      </div>
+      <p class="banner error" id="run-error" role="alert" hidden></p>
+
+      <div class="tabs" role="tablist" aria-label="Audit results">
+        <button role="tab" id="tab-review" aria-controls="panel-review" aria-selected="true">Review <span class="count" id="c-review"></span></button>
+        <button role="tab" id="tab-findings" aria-controls="panel-findings" aria-selected="false" tabindex="-1">Technical findings <span class="count" id="c-findings"></span></button>
+        <button role="tab" id="tab-intents" aria-controls="panel-intents" aria-selected="false" tabindex="-1">Query intents <span class="count" id="c-intents"></span></button>
+        <button role="tab" id="tab-pages" aria-controls="panel-pages" aria-selected="false" tabindex="-1">Pages <span class="count" id="c-pages"></span></button>
+        <button role="tab" id="tab-trace" aria-controls="panel-trace" aria-selected="false" tabindex="-1">Trace <span class="count" id="c-trace"></span></button>
+      </div>
+
+      <section role="tabpanel" id="panel-review" aria-labelledby="tab-review" tabindex="0">
+        <p class="loading" id="review-loading">The agents are still working. Recommendations appear here once the verifier has checked them.</p>
+        <form id="review-form" hidden novalidate>
+          <div class="review-bar">
+            <p id="review-summary"></p>
+            <div class="bulk">
+              <button type="button" class="btn ghost" id="approve-all">Approve all verified</button>
+              <button type="button" class="btn ghost" id="reject-all">Reject all</button>
+            </div>
+          </div>
+          <div id="rec-list"></div>
+          <div class="review-submit">
+            <label for="reviewer">Your name</label>
+            <input id="reviewer" name="reviewer" autocomplete="name" maxlength="80" required>
+            <button class="btn primary" type="submit" id="submit-review">Approve selected and create report</button>
+            <p class="form-error" id="review-error" role="alert"></p>
+          </div>
+        </form>
+        <section id="report" hidden aria-labelledby="report-title">
+          <div class="report-head">
+            <h3 id="report-title" tabindex="-1">Approved report</h3>
+            <a class="btn primary" id="download" href="#" download>Download Markdown</a>
+          </div>
+          <pre class="report-body" id="report-body" tabindex="0"></pre>
+        </section>
+      </section>
+
+      <section role="tabpanel" id="panel-findings" aria-labelledby="tab-findings" tabindex="0" hidden>
+        <div class="table-wrap"><table>
+          <caption class="sr-only">Technical findings by page</caption>
+          <thead><tr><th scope="col">Severity</th><th scope="col">Check</th><th scope="col">Page</th><th scope="col">Detail</th></tr></thead>
+          <tbody id="findings-body"></tbody>
+        </table></div>
+      </section>
+
+      <section role="tabpanel" id="panel-intents" aria-labelledby="tab-intents" tabindex="0" hidden>
+        <div id="intent-list" class="intent-list"></div>
+      </section>
+
+      <section role="tabpanel" id="panel-pages" aria-labelledby="tab-pages" tabindex="0" hidden>
+        <div class="table-wrap"><table>
+          <caption class="sr-only">Crawled pages</caption>
+          <thead><tr><th scope="col">Page</th><th scope="col">Title</th><th scope="col">Words</th><th scope="col">Structured data</th><th scope="col">Quarantined</th></tr></thead>
+          <tbody id="pages-body"></tbody>
+        </table></div>
+        <h3 class="sub">Not crawled</h3>
+        <ul id="crawl-errors" class="plain"></ul>
+      </section>
+
+      <section role="tabpanel" id="panel-trace" aria-labelledby="tab-trace" tabindex="0" hidden>
+        <ol id="trace" class="trace"></ol>
+      </section>
+    </section>
+  </main>
+</div>
+<footer class="foot">
+  <p>Sample data is fictional. Brightwater Plumbing Co. and the .example domain do not exist. The source, tests and evaluation are in the project README.</p>
+</footer>
+</body>
+</html>

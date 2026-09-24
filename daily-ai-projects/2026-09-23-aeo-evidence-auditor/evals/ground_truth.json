@@ -1,0 +1,40 @@
+{
+  "_about": "Hand labels for the Brightwater sample site. technical_issues lists every issue deliberately seeded into the HTML plus one objectively true unplanned one (a 63-character blog title). queries are labelled by SEO judgement; 'unit_test': true marks the five UI default queries that the unit tests assert on. The other queries are only used by evals/run_eval.py so accuracy is measured on queries the heuristics were not tuned against.",
+  "technical_issues": [
+    {"check": "missing_meta_description", "path": "/services/water-heater-repair"},
+    {"check": "images_missing_alt", "path": "/services/water-heater-repair"},
+    {"check": "multiple_h1", "path": "/services/drain-cleaning"},
+    {"check": "thin_content", "path": "/services/drain-cleaning"},
+    {"check": "thin_content", "path": "/contact"},
+    {"check": "thin_content", "path": "/blog/"},
+    {"check": "missing_structured_data", "path": "/services/drain-cleaning"},
+    {"check": "missing_structured_data", "path": "/about"},
+    {"check": "missing_structured_data", "path": "/contact"},
+    {"check": "missing_structured_data", "path": "/blog/"},
+    {"check": "noindex", "path": "/emergency-plumber"},
+    {"check": "missing_canonical", "path": "/about"},
+    {"check": "duplicate_title", "path": "/about"},
+    {"check": "duplicate_title", "path": "/contact"},
+    {"check": "missing_h1", "path": "/contact"},
+    {"check": "broken_internal_link", "path": "/"},
+    {"check": "invalid_structured_data", "path": "/blog/winterize-pipes"},
+    {"check": "long_title", "path": "/blog/winterize-pipes"},
+    {"check": "long_title", "path": "/blog/water-heater-noises"},
+    {"check": "long_meta_description", "path": "/blog/winterize-pipes"}
+  ],
+  "queries": [
+    {"query": "emergency plumber near me", "intent": "local", "best_path": "/emergency-plumber", "unit_test": true},
+    {"query": "why is my water heater making a popping noise", "intent": "informational", "best_path": "/blog/water-heater-noises", "unit_test": true},
+    {"query": "how much does drain cleaning cost", "intent": "commercial", "best_path": "/services/drain-cleaning", "unit_test": true},
+    {"query": "tankless water heater installation", "intent": "transactional", "best_path": "/services/water-heater-repair", "unit_test": true},
+    {"query": "brightwater plumbing reviews", "intent": "navigational", "best_path": null, "unit_test": true},
+    {"query": "how to stop pipes freezing", "intent": "informational", "best_path": "/blog/winterize-pipes"},
+    {"query": "water heater repair tacoma", "intent": "local", "best_path": "/services/water-heater-repair"},
+    {"query": "burst pipe what to do", "intent": "informational", "best_path": "/emergency-plumber"},
+    {"query": "book drain cleaning", "intent": "transactional", "best_path": "/services/drain-cleaning"},
+    {"query": "brightwater plumbing", "intent": "navigational", "best_path": "/"},
+    {"query": "is it worth repairing an old water heater", "intent": "commercial", "best_path": "/services/water-heater-repair"},
+    {"query": "why does my faucet bang when i turn it off", "intent": "informational", "best_path": "/blog/water-heater-noises"}
+  ],
+  "injection_markers": ["brightflow", "no seo issues", "needs no changes"]
+}
