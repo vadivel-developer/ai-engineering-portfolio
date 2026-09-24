@@ -15,7 +15,7 @@ Every project:
 
 | Date | Project | Domain | Agent roles | Technologies | GitHub | Live | Verification |
 |---|---|---|---|---|---|---|---|
-| 2026-09-23 | [AEO Evidence Auditor](https://github.com/vadivel-developer/ai-engineering-portfolio/tree/main/projects/aeo-evidence-auditor) | SEO / answer-engine optimisation | Crawler, Technical Auditor, Intent Analyst (LLM + tools), Gap Strategist (LLM), Evidence Verifier, human reviewer | Python 3.13, FastAPI, Pydantic v2, Ollama (qwen3:4b), BM25, vanilla JS | [aeo-evidence-auditor](https://github.com/vadivel-developer/aeo-evidence-auditor) | not deployed yet | Local: 55 tests, ruff, mypy --strict, eval set, desktop and mobile browser run, axe-core 0 violations. **In progress** (on GitHub; not yet deployed) |
+| 2026-09-23 | [AEO Evidence Auditor](https://github.com/vadivel-developer/ai-engineering-portfolio/tree/main/projects/aeo-evidence-auditor) | SEO / answer-engine optimisation | Crawler, Technical Auditor, Intent Analyst (LLM + tools), Gap Strategist (LLM), Evidence Verifier, human reviewer | Python 3.13, FastAPI, Pydantic v2, Ollama (qwen3:4b), BM25, vanilla JS | [aeo-evidence-auditor](https://github.com/vadivel-developer/aeo-evidence-auditor) | [live demo](https://aeo-evidence-auditor.onrender.com/) | Local: 56 tests, ruff, mypy --strict, eval set, desktop and mobile browser run, axe-core 0 violations. Live: workflow, desktop and mobile, axe-core 0 violations, health check. **Complete** |
 
 The full list with status and blockers is in [projects/PROJECT_TRACKER.md](https://github.com/vadivel-developer/ai-engineering-portfolio/blob/main/projects/PROJECT_TRACKER.md).
 

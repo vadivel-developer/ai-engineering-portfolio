@@ -6,7 +6,7 @@ Otherwise it is **In progress** with the exact blocker listed.
 
 | Date | Project | Domain | Agent architecture | Stack | GitHub | Live URL | Status |
 |---|---|---|---|---|---|---|---|
-| 2026-09-23 | [AEO Evidence Auditor](aeo-evidence-auditor/) | SEO / AEO | 5 agents: Crawler → Technical Auditor → Intent Analyst (LLM, tool calling) → Gap Strategist (LLM, structured output) → Evidence Verifier (with a revision loop back to Gap Strategist) → human review | Python, FastAPI, Pydantic, Ollama, BM25, vanilla JS | [aeo-evidence-auditor](https://github.com/vadivel-developer/aeo-evidence-auditor) | not deployed | **In progress**: local build verified and on GitHub; blocked on choosing a hosting account for the live URL |
+| 2026-09-23 | [AEO Evidence Auditor](aeo-evidence-auditor/) | SEO / AEO | 5 agents: Crawler → Technical Auditor → Intent Analyst (LLM, tool calling) → Gap Strategist (LLM, structured output) → Evidence Verifier (with a revision loop back to Gap Strategist) → human review | Python, FastAPI, Pydantic, Ollama, BM25, vanilla JS | [aeo-evidence-auditor](https://github.com/vadivel-developer/aeo-evidence-auditor) | [https://aeo-evidence-auditor.onrender.com/](https://aeo-evidence-auditor.onrender.com/) | **Complete**: local and live verification passed on 2026-09-24 |
 
 ## Coverage so far
 
@@ -24,7 +24,7 @@ Use this to avoid repeating a use case or an architecture.
 | TypeScript full-stack | not yet |
 | RAG ingestion / citations / retrieval eval | not yet (outside this repo: `sageit-rag-chat`) |
 | MCP server or client | not yet |
-| Deployment + monitoring | not yet |
+| Deployment + health checks | AEO Evidence Auditor (Render) |
 
 ## Candidates for later entries
 

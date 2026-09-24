@@ -110,3 +110,8 @@ def test_ollama_unavailable_returns_503() -> None:
         assert c.get("/api/health").json()["model_ready"] is False
         r = c.post("/api/runs", json={"queries": ["q"]})
         assert r.status_code == 503 and "unavailable" in r.json()["error"]
+
+
+def test_head_requests_for_uptime_monitors(client: TestClient) -> None:
+    assert client.head("/").status_code == 200
+    assert client.head("/api/health").status_code == 200

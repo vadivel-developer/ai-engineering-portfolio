@@ -8,9 +8,9 @@ until a person approves it.
 
 | | |
 |---|---|
-| **Status** | In progress. Built, verified locally and published to GitHub; not yet deployed (see [section 13](#13-github-repository-and-live-url)) |
+| **Status** | Complete. Verified locally and live (see [section 13](#13-github-repository-and-live-url)) |
 | **GitHub** | https://github.com/vadivel-developer/aeo-evidence-auditor |
-| **Live demo** | Not deployed yet |
+| **Live demo** | https://aeo-evidence-auditor.onrender.com/ (demonstration mode) |
 | **Runs without paid APIs** | Yes. Demonstration mode needs no model; the model mode uses a free local model through Ollama |
 
 ---
@@ -164,7 +164,7 @@ With no GPU, expect minutes per audit rather than seconds; see the measured timi
 **Checks:**
 
 ```powershell
-python -m pytest -q                         # 55 tests
+python -m pytest -q                         # 56 tests
 python -m ruff check .
 python -m ruff format --check .
 python -m mypy                              # strict mode
@@ -191,7 +191,7 @@ Output in demonstration mode (reproduced by `test_demo_workflow_reaches_human_re
 
 ## 10. Tests and evaluation
 
-**Automated tests: 55 passing** (`pytest`, ~8 s). They cover:
+**Automated tests: 56 passing** (`pytest`, ~8 s). They cover:
 
 * SSRF guard (file://, localhost, RFC1918, link-local metadata IP, IPv6 loopback, credentials, odd ports)
 * prompt-injection detection, fencing that page content cannot close, quarantine of visible and hidden injected text
@@ -273,13 +273,15 @@ independent verifier is what stops those fabrications reaching a client. With th
 ## 13. GitHub repository and live URL
 
 * GitHub repository: **https://github.com/vadivel-developer/aeo-evidence-auditor** (public). Portfolio index: https://github.com/vadivel-developer/ai-engineering-portfolio
-* Live URL: **not deployed yet.** The repository includes a Render Blueprint (`render.yaml`): one free
-  web service, `AEO_LLM_PROVIDER=demo`, live crawling off, health check `/api/health`. To deploy:
-
-  [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vadivel-developer/aeo-evidence-auditor)
-
-  The public demo runs in the clearly labelled demonstration mode, because a free host has no GPU or
-  local model. Free Render services sleep after inactivity, so the first request can take about a minute.
+* Live URL: **https://aeo-evidence-auditor.onrender.com/** (Render free web service, deployed from `render.yaml`).
+  The public demo runs in the **demonstration mode** (deterministic rules, no language model), labelled on
+  every screen, with live crawling of other sites switched off. Free Render services sleep when idle,
+  so the first request can take about a minute.
+* Live verification (2026-09-24, results in `docs/browser-check-live.json`): `/api/health` returned 200;
+  CSP, `nosniff` and `X-Frame-Options` headers were present; the full workflow (run audit → review → report)
+  completed at 1440×900 and 390×844; axe-core found 0 violations on every screen; there were no console
+  errors and no horizontal overflow; live crawl returned 403, invalid input 422, and a report requested
+  before review 409.
 
 ## 14. Skills demonstrated and relevant roles
 
@@ -300,7 +302,7 @@ Engineer**, and SEO/marketing-technology roles that are adopting AI.
   six fabricated recommendations (invented pages and external quotes) before the mandatory
   human-approval step.
 * Hardened the agents against prompt injection in crawled web content (quarantine, data fencing,
-  read-only tools, verifier rules) and against SSRF, and backed the workflow with 55 automated tests
+  read-only tools, verifier rules) and against SSRF, and backed the workflow with 56 automated tests
   and a labelled evaluation set (technical-issue recall 20/20, precision 0.83, intent accuracy 11/12
   in deterministic mode).
 

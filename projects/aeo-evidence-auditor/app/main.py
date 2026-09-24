@@ -58,7 +58,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             return f"Local model · {settings.ollama_model} via Ollama", ok, detail
         return DEMO_LABEL, True, "ok"
 
-    @app.get("/api/health")
+    @app.api_route("/api/health", methods=["GET", "HEAD"])
     async def health() -> dict[str, Any]:
         label, ready, detail = await backend()
         return {
@@ -217,7 +217,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def http_error(_request: Request, exc: HTTPException) -> JSONResponse:
         return JSONResponse({"error": exc.detail}, status_code=exc.status_code)
 
-    @app.get("/", include_in_schema=False)
+    @app.api_route("/", methods=["GET", "HEAD"], include_in_schema=False)
     async def index() -> FileResponse:
         return FileResponse(STATIC_DIR / "index.html")
 
